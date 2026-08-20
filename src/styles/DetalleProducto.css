@@ -1,0 +1,302 @@
+
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.detalle-container {
+  min-height: 100vh;
+
+  padding: 70px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.08),
+      transparent 35%
+    ),
+    #f7f7f8;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.detalle-card {
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.08);
+
+  animation: slideIn 0.5s ease;
+}
+
+
+/* =========================================
+   ANIMACIÓN
+========================================= */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   IMAGEN
+========================================= */
+
+.detalle-imagen {
+  display: block;
+
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+
+  margin: 0 auto 30px;
+
+  object-fit: contain;
+
+  border-radius: 16px;
+
+  background: #f5f5f5;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+}
+
+
+
+
+/* =========================================
+   NOMBRE
+========================================= */
+
+.detalle-nombre {
+  margin: 0 0 30px;
+
+  color: #171717;
+
+  font-size: clamp(2rem, 4vw, 3rem);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.detalle-content {
+  margin-bottom: 35px;
+}
+
+.detalle-item {
+  margin-bottom: 18px;
+
+  padding: 20px 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f5ff 0%,
+      #faf7ff 100%
+    );
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+.detalle-label {
+  color: #737373;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   PRECIO
+========================================= */
+
+.detalle-precio {
+  margin: 8px 0 0;
+
+  color: #171717;
+
+  font-size: 2rem;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.detalle-desc {
+  margin: 10px 0 0;
+
+  color: #737373;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
+
+.btn-volver {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 13px 20px;
+
+  background: #171717;
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 11px;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.btn-volver:hover {
+  background: #6366f1;
+
+  transform: translateX(-4px);
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.btn-volver:active {
+  transform: translateX(-1px);
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error-message {
+  margin: 0;
+
+  padding: 30px;
+
+  color: #ef4444;
+
+  background: white;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+
+  font-size: 1.3rem;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .detalle-container {
+    padding: 35px 16px;
+  }
+
+  .detalle-card {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(99, 102, 241, 0.35);
+
+  font-size: 1rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+
+  transition: transform 0.4s ease;
+  }
+
+  .detalle-imagen {
+    height: 280px;
+    width: 100%;
+    margin-bottom: 25px;
+
+    border-radius: 13px;
+  }
+
+  .detalle-nombre {
+    font-size: 2rem;
+
+    margin-bottom: 22px;
+  }
+
+  .detalle-item {
+    padding: 17px;
+  }
+
+  .detalle-precio {
+    font-size: 1.6rem;
+  }
+
+  .detalle-desc {
+    font-size: 0.95rem;
+  }
+
+  .btn-volver {
+    width: 100%;
+
+    justify-content: center;
+  }
+}
+
