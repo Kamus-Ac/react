@@ -162,6 +162,37 @@ body {
   margin-left: auto;
 }
 
+.header-carrito {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 0 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.header-carrito:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-carrito strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 0.7rem;
+}
+
 /* =========================================
    BUSCADOR
 ========================================= */
@@ -608,44 +639,103 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+/* =========================================
+   FAVORITO
+========================================= */
 
-/* FAVORITO */
+/* =========================================
+   FAVORITO
+========================================= */
 
 .btn-favorito {
   position: absolute;
   top: 15px;
   right: 15px;
+  z-index: 5;
 
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
 
   border: none;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.9);
-
-  color: #555;
-
-  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.95);
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/* CORAZÓN */
+
+.corazon {
+  width: 23px;
+  height: 23px;
+
+  fill: transparent;
+  stroke: #737373;
+  stroke-width: 1.8;
+
+  transform-origin: center;
+
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* HOVER */
+
 .btn-favorito:hover {
-  background: white;
+  transform: scale(1.08);
 
-  color: #ef4444;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.16);
+}
 
+.btn-favorito:hover .corazon {
+  stroke: #ef4444;
   transform: scale(1.08);
 }
 
+/* FAVORITO ACTIVADO */
 
-/* =========================================
-   INFORMACIÓN
-========================================= */
+.btn-favorito.activo .corazon {
+  fill: #ef4444;
+  stroke: #ef4444;
 
+  animation: corazonFavorito 0.35s ease;
+}
+
+/* ANIMACIÓN */
+
+@keyframes corazonFavorito {
+  0% {
+    transform: scale(0.5);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  75% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 .producto-info {
   padding: 22px;
 
@@ -697,13 +787,17 @@ body {
 ========================================= */
 
 .producto-footer {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  justify-content: space-between;
 
   gap: 15px;
 
   margin-top: 25px;
+}
+
+.producto-footer > div:first-child {
+  grid-column: 1 / -1;
 }
 
 .precio-label {
@@ -735,6 +829,8 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: center;
+  min-width: 0;
 
   padding: 11px 15px;
 
@@ -767,6 +863,24 @@ body {
 
 .btn-ver-detalle:hover span {
   transform: translateX(4px);
+}
+
+.btn-agregar-carrito {
+  white-space: nowrap;
+  padding: 11px 13px;
+  border: 1px solid #cbd9de;
+  border-radius: 10px;
+  background: #eaf4f7;
+  color: #00385a;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-agregar-carrito:hover {
+  background: #d8ebf0;
+  transform: translateY(-2px);
 }
 
 
@@ -829,6 +943,23 @@ body {
   }
 }
 
+.favoritos-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  gap: 15px;
+}
+
+.favoritos-vacio h2 {
+  margin: 0;
+}
+
+.favoritos-vacio p {
+  margin: 0 0 15px;
+}
 
 /* =========================================
    MÓVIL
@@ -857,6 +988,30 @@ body {
     height: 220px;
   }
 
+  .producto-footer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .producto-footer > div:first-child,
+  .btn-ver-detalle,
+  .btn-agregar-carrito {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .header-tienda {
+    padding: 0 14px;
+  }
+
+  .header-buscador {
+    display: none;
+  }
+
+  .header-carrito span {
+    display: none;
+  }
+
   .catalogo-controles {
     width: 100%;
     justify-content: space-between;
@@ -867,4 +1022,26 @@ body {
     align-items: flex-start;
     gap: 20px;
   }
+}
+@keyframes carrito-rebote {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2) rotate(-6deg);
+  }
+  55% {
+    transform: scale(0.95) rotate(4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.header-carrito.rebote {
+  animation: carrito-rebote 0.5s ease;
+}
+
+.header-carrito.rebote strong {
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.35);
 }

@@ -7,13 +7,18 @@ function PageTransition({ children }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(false);
+    const hideTimer = setTimeout(() => {
+      setVisible(false);
+    }, 0);
 
-    const timer = setTimeout(() => {
+    const showTimer = setTimeout(() => {
       setVisible(true);
     }, 50);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(hideTimer);
+      clearTimeout(showTimer);
+    };
   }, [location.pathname]);
 
   return (
