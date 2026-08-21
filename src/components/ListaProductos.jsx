@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import ProductoCard from './ProductoCard';
 import Header from './Header'
 import { useCarrito } from '../context/useCarrito';
-
+import Hero from './hero.jsx';
 
 function ListaProductos() {
 
@@ -63,6 +63,7 @@ function ListaProductos() {
     <div className="tienda">
 
       {<Header/>}
+      <Hero/>
 
       {/* CONTENIDO */}
       <main className="lista-container">

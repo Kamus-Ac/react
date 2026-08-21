@@ -11,7 +11,7 @@ export function CarritoProvider({ children }) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }, [carrito]);
 
-  const agregarAlCarrito = (producto) => {
+  const agregarAlCarrito = (producto,cantidad = 1) => {
     setCarrito((carritoActual) => {
       const existe = carritoActual.find(
         (item) => item.id === producto.id
@@ -20,7 +20,7 @@ export function CarritoProvider({ children }) {
       if (existe) {
         return carritoActual.map((item) =>
           item.id === producto.id
-            ? { ...item, cantidad: item.cantidad + 1 }
+            ? { ...item, cantidad: item.cantidad + cantidad }
             : item
         );
       }
@@ -30,7 +30,7 @@ export function CarritoProvider({ children }) {
         {
           ...producto,
           id: producto.id,
-          cantidad: 1
+          cantidad: cantidad
         }
       ];
     });
